@@ -10,6 +10,8 @@
   "scripts": {
     "dev": "lerna run dev --stream",
     "dev:website": "lerna run dev --scope=website --stream",
-    "build": "lerna run build --stream"
+    "build": "lerna run build --stream",
+    "lint": "lerna run lint --stream",
+    "lint:fix": "lerna run lint:fix --stream"
   }
 }
