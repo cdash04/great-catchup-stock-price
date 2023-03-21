@@ -1,0 +1,43 @@
+{
+  "name": "price-charting-client",
+  "version": "0.0.0",
+  "description": "price charting api client",
+  "author": "Christophe Duchesne-Ashworth < christophe.ashworth@zendesk.com>",
+  "homepage": "https://github.com/cdash04/great-catchup-stock-price#readme",
+  "license": "ISC",
+  "main": "lib/price-charting-client.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdash04/great-catchup-stock-price.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint lib/**/*.ts",
+    "lint:fix": "yarn lint --fix",
+    "typecheck": "tsc --noEmit",
+    "run-prettier": "prettier lib/**/*.ts"
+  },
+  "bugs": {
+    "url": "https://github.com/cdash04/great-catchup-stock-price/issues"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
+    "@typescript-eslint/parser": "^5.13.0",
+    "axios": "^1.3.4",
+    "eslint": "^8.10.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.2"
+  }
+}
