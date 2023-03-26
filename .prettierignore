@@ -1,0 +1,4 @@
+*.svelte
+dist/*
+test/*
+/node_modules/

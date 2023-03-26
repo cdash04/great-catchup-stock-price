@@ -1,0 +1,81 @@
+{
+  "josni": [
+    {
+      "console": "nintendo-3ds",
+      "game": "spirit-camera-the-cursed-memoir",
+      "condition": "cib"
+    },
+    {
+      "console": "playstation-2",
+      "game": "orphen-scion-of-sorcery",
+      "condition": "cib"
+    },
+    {
+      "console": "nintendo-ds",
+      "game": "honeycomb-beat",
+      "condition": "cib"
+    },
+    {
+      "console": "xbox",
+      "game": "the-thing",
+      "condition": "cib"
+    },
+    {
+      "console": "playstation-2",
+      "game": "rogue-galaxy",
+      "condition": "cib"
+    }
+  ],
+  "will": [
+    {
+      "console": "nes",
+      "game": "play-action-football",
+      "condition": "loose"
+    },
+    {
+      "console": "gameboy",
+      "game": "play-action-football",
+      "condition": "loose"
+    },
+    {
+      "console": "super-nintendo",
+      "game": "nhl-stanley-cup",
+      "condition": "loose"
+    },
+    {
+      "console": "nintendo-64",
+      "game": "madden-99",
+      "condition": "loose"
+    },
+    {
+      "console": "nintendo-3ds",
+      "game": "skylanders-swap-force-starter-pack",
+      "condition": "loose"
+    },
+    {
+      "console": "wii",
+      "game": "jillian-michaels'-fitness-ultimatum-2010",
+      "condition": "cib"
+    },
+    {
+      "console": "wii-u",
+      "game": "your-shape-fitness-evolved-2013",
+      "condition": "cib"
+    },
+    {
+      "console": "virtual-boy",
+      "game": "mario's-tennis",
+      "condition": "loose"
+    },
+    {
+      "console": "wii",
+      "game": "nhl-slapshot-bundle",
+      "condition": "loose"
+    },
+    {
+      "console": "gameboy-advance",
+      "game": "gauntlet-and-rampart",
+      "condition": "new"
+    }
+  ]
+}
