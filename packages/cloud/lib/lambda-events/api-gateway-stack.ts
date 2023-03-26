@@ -20,7 +20,7 @@ import {
   
     readonly routes: Record<string, Resource> = {};
   
-    constructor(scope: Construct, id: string, dynamoDbTableName: string = '') {
+    constructor(scope: Construct, id: string) {
       super(scope, id);
       this.api = new RestApi(this, 'api-gateway-stack', {
         restApiName: 'Great Catchup Stock Price API',
@@ -38,7 +38,7 @@ import {
       });
   
       // lambdas
-      this.handlers.gamePriceLambda = new GamePriceLambda(this, 'price-game-lambda', dynamoDbTableName);
+      this.handlers.gamePriceLambda = new GamePriceLambda(this, 'price-game-lambda');
   
       // integrations
       this.integrations.gamePriceIntegration = this.getLambdaIntegration(

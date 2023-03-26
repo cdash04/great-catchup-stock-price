@@ -1,10 +1,31 @@
 <script lang="ts">
-  import PriceChartingFrame from './lib/PriceChartingFrame.svelte';
+  import GamePriceChart from './lib/game-price-chart.svelte';
 </script>
 
 <main>
-  <PriceChartingFrame gameUrl="nintendo-3ds/spirit-camera-the-cursed-memoir" />
+  <div class="App">
+    <div class="game-prices">
+      <div class="game-price">
+        <GamePriceChart name="Josni"/>
+      </div>
+      <div class="game-price">
+        <GamePriceChart name="Will"/>
+      </div>
+    </div>
+  </div>
 </main>
 
 <style>
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .App {
+    width: 100%;
+  }
 </style>

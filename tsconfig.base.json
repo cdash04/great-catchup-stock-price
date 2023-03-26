@@ -2,5 +2,8 @@
   "compilerOptions": {
     "resolveJsonModule": true,
     "baseUrl": "packages",
+    "paths": {
+      "@app/*": ["cloud/app/*"],
+    }
   },
 }
