@@ -1,7 +1,4 @@
-node_modules/
-
-build
-lib
-
+node_modules
+build/
 dist/
-.turbo
+*.log
