@@ -6,10 +6,7 @@
   <div class="App">
     <div class="game-prices">
       <div class="game-price">
-        <GamePriceChart name="Josni"/>
-      </div>
-      <div class="game-price">
-        <GamePriceChart name="Will"/>
+        <GamePriceChart />
       </div>
     </div>
   </div>

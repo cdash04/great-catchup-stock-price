@@ -1,8 +1,9 @@
 /* eslint-disable class-methods-use-this */
 import {
+  Cors,
     LambdaIntegration,
     Resource,
-    RestApi,
+    RestApi
   } from 'aws-cdk-lib/aws-apigateway';
   import { IFunction } from 'aws-cdk-lib/aws-lambda';
   import { Construct } from 'constructs';
@@ -20,7 +21,7 @@ import {
   
     readonly routes: Record<string, Resource> = {};
   
-    constructor(scope: Construct, id: string) {
+    constructor(scope: Construct, id: string,  dynamoDbTableName: string = "") {
       super(scope, id);
       this.api = new RestApi(this, 'api-gateway-stack', {
         restApiName: 'Great Catchup Stock Price API',
@@ -32,13 +33,12 @@ import {
             'X-Api-Key',
           ],
           allowMethods: ['OPTIONS', 'GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-          allowCredentials: true,
-          allowOrigins: ['http://localhost:3000'],
+          allowOrigins: Cors.ALL_ORIGINS,
         },
       });
   
       // lambdas
-      this.handlers.gamePriceLambda = new GamePriceLambda(this, 'price-game-lambda');
+      this.handlers.gamePriceLambda = new GamePriceLambda(this, 'price-game-lambda', dynamoDbTableName);
   
       // integrations
       this.integrations.gamePriceIntegration = this.getLambdaIntegration(

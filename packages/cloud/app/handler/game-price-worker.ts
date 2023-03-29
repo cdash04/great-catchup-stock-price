@@ -26,7 +26,6 @@ export const handler = async (
         (prices) => {
           gamePriceRepository.upsert(
             { user: 'Will', console, game, condition, prices },
-            { exists: null },
           );
         },
       ),

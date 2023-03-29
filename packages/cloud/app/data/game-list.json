@@ -30,27 +30,27 @@
     {
       "console": "nes",
       "game": "play-action-football",
-      "condition": "loose"
+      "condition": "used"
     },
     {
       "console": "gameboy",
       "game": "play-action-football",
-      "condition": "loose"
+      "condition": "used"
     },
     {
       "console": "super-nintendo",
       "game": "nhl-stanley-cup",
-      "condition": "loose"
+      "condition": "used"
     },
     {
       "console": "nintendo-64",
       "game": "madden-99",
-      "condition": "loose"
+      "condition": "used"
     },
     {
       "console": "nintendo-3ds",
       "game": "skylanders-swap-force-starter-pack",
-      "condition": "loose"
+      "condition": "used"
     },
     {
       "console": "wii",
@@ -65,12 +65,12 @@
     {
       "console": "virtual-boy",
       "game": "mario's-tennis",
-      "condition": "loose"
+      "condition": "used"
     },
     {
       "console": "wii",
       "game": "nhl-slapshot-bundle",
-      "condition": "loose"
+      "condition": "used"
     },
     {
       "console": "gameboy-advance",
