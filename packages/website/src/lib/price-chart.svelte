@@ -49,7 +49,62 @@
     pointHitRadius: 10,
   }
 
-  $: getChartData = () => {
+  function getPriceByDate (chartLabelsDates: dayjs.Dayjs[]) {
+    
+    return function(data: GamePriceResponse) {
+
+    const priceByDate: Record<string, Record<string, number>> = {};
+
+
+    const flattenGamePrices = data.games.flatMap(function ({ console, condition, game, prices }) {
+      return prices.map((price) => ({ console, condition, game, ...price }))
+    });
+
+    flattenGamePrices.sort((a, b) => a.time - b.time);
+
+    // set price by date for each game
+    chartLabelsDates?.forEach((date) => {
+      const labelDate = date.format('MMM YYYY');
+      // init object for date
+      priceByDate[labelDate] = {};
+
+      flattenGamePrices?.forEach(function ({ game, price, time }, i) {
+        if (!dayjs(time).isAfter(date)) {
+
+          // add price to date
+          priceByDate[labelDate][game] = (price/100);
+
+          // remove price from array
+          flattenGamePrices.splice(i, 1);
+        }
+      });
+    });
+
+    console.log({priceByDate});
+
+    // init total price per date
+    Object.keys(priceByDate).forEach(function (date) {
+      priceByDate[date]['total'] = 0;
+      console.log({init: priceByDate[date]});
+      const totalPrice = Object.values(priceByDate[date]).reduce((a, b) => {
+        console.log({a, b});
+        return a + b;
+      }, 0);
+      priceByDate[date]['total'] = totalPrice;
+    });
+
+    console.log({priceByDate});
+
+    return {
+        ...defaultDatasets,
+        borderColor: userOptions[data.user].color,
+        data: Object.values(priceByDate).map((price) => price.total),
+        label: data.user,
+      };
+    }
+  }
+
+  function getChartData(responses) {
     console.log({responses});
 
     let timeFrame = dayjs().subtract(10, 'year');
@@ -61,49 +116,7 @@
       timeFrame = timeFrame.add(1, 'month');
     }
 
-    const getPriceByDate = (data: GamePriceResponse) => {
-
-      const priceByDate: Record<string, Record<string, number>> = {};
-
-      console.log(data.games.map(game => game.prices));
-    
-      const flattenGamePrices = data.games.flatMap(({ console, condition, game, prices }) => {
-        return prices.map((price) => ({ console, condition, game, ...price }))
-      });
-
-      flattenGamePrices.sort((a, b) => a.time - b.time);
-
-      console.log({flattenGamePrices});
-
-      chartLabelsDates?.forEach((date) => {
-        flattenGamePrices?.forEach(({ game, price, time }, i) => {
-          if (!dayjs(time).isAfter(date)) {
-            // init price if doesn't exist
-            priceByDate[date.format('MMM YYYY')] ??= {};
-            priceByDate[date.format('MMM YYYY')]['total'] ??= 0;
-
-            // add price to date
-            priceByDate[date.format('MMM YYYY')][game] = (price/100);
-            priceByDate[date.format('MMM YYYY')]['total'] += (price/100);
-
-            // remove price from array
-            flattenGamePrices.splice(i, 1);
-          }
-        });
-      });
-
-      console.log({priceByDate});
-      
-
-      return {
-          ...defaultDatasets,
-          borderColor: userOptions[data.user].color,
-          data: Object.values(priceByDate).map((price) => price.total),
-          label: data.user,
-        };
-    }
-
-    const datasets = responses?.map(getPriceByDate);
+    const datasets = responses?.map(getPriceByDate(chartLabelsDates));
     const labels = chartLabelsDates.map(date => date.format('MMM YYYY'));
 
     return {
@@ -114,5 +127,5 @@
 </script>
 
 <div></div>
-<Line data={getChartData()} />
+<Line data={getChartData(responses)} />
 
